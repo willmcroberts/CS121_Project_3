@@ -3,24 +3,23 @@
 #include <ctime>
 
 void advanceHorse(int, int*);
+void printLane(int, int*);
+bool isWinner(int, int*);
+const int TRACK_LENGTH = 15;
 
 int main() {
 	int horses[5] = {0};
 	bool keepGoing = true;
-	const int TRACK_LENGTH = 15;
 	
 	srand(time(NULL));
 
 	while(keepGoing) {
-		for (int i = 0; i < TRACK_LENGTH; i++) {
+		for (int i = 0; i < 5; i++) {
 			advanceHorse(i, horses);
-			for (int i = 0; i < 5; i++) {
-				std::cout << horses[i];
-			}
-		//	printLane(i, horses[i]);
-		//	if (isWinner(i, horses[i]) {
-		//		keepGoing = false;
-	//		} // end of if statement	
+			printLane(i, horses);
+			if (isWinner(i, horses)) {
+				keepGoing = false;
+			} // end of if statement
 		} // end for loop
 	} // end while loop
 
@@ -34,4 +33,26 @@ void advanceHorse(int horseNum, int* horses) {
 			horses[horseNum]++;
 		} // end elif statement
 	} // end for loop
-} // end advance
+} // end advanceHorse
+
+void printLane(int horseNum, int* horses) {
+	for (int i = 0; i < TRACK_LENGTH; i++) {
+		if (i == horseNum) {
+			std::cout << horses[horseNum] << " ";
+		} else {
+			std::cout << ". ";
+		} // end elif statement
+	} // end for loop
+
+	std::cout << std::endl;
+} // end printLane
+
+bool isWinner(int horseNum, int* horses) {
+	bool result = false;
+	if (horses[horseNum] >= TRACK_LENGTH) {
+		result = true;
+		std::cout << "HORSE " << horses[horseNum] << " WINS!!!" << std::endl;
+	} // end if statement
+
+	return result;
+} // end isWinner
