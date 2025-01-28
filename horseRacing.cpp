@@ -27,7 +27,7 @@ int main() {
 	return 0;
 } // end main
 
-void advanceHorse(int horseNum, int (&horses)[]) {
+void advanceHorse(int horseNum, int* horses) {
 	for (int i = 0; i < 5; i++) {
 		int coin = rand() % 2;
 		if (coin == 1) {
