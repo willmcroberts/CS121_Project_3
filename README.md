@@ -27,7 +27,7 @@ generate a random int 0 or 1
 if random equals 1:
 	postions++
 ```
-### void printLane(int horseNum, int(pointet) horses);
+### void printLane(int horseNum, int(pointer) horses);
 ```
 given a horses number
 loop from zero to track length
